@@ -63,7 +63,10 @@
     <section id="route" class="section">
       <div class="container">
         <h2 class="route-title">學習路線</h2>
-        <img src="image/mapword.png" alt="學習路線" class="route-img" loading="lazy" decoding="async" />
+        <picture>
+          <source srcset="image/mapword.webp" type="image/webp" />
+          <img src="image/mapword.png" alt="學習路線" class="route-img" loading="lazy" decoding="async" fetchpriority="low" />
+        </picture>
       </div>
     </section>
 
@@ -235,6 +238,6 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
   </html>

@@ -55,3 +55,50 @@ if (contactForm) {
     e.preventDefault();
   });
 }
+
+// Register service worker for caching
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+
+// Upgrade images to WebP when available
+(function () {
+  try {
+    const canWebP = (() => {
+      const c = document.createElement('canvas');
+      return c.toDataURL && c.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+    })();
+    if (!canWebP) return;
+    const imgs = document.querySelectorAll('img');
+    imgs.forEach(async (img) => {
+      const src = img.getAttribute('src');
+      if (!src) return;
+      const webp = src.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+      if (webp === src) return;
+      try {
+        const res = await fetch(webp, { method: 'HEAD' });
+        if (res.ok) img.src = webp;
+      } catch {}
+    });
+  } catch {}
+})();
+
+// Basic performance metrics
+(function () {
+  try {
+    const po = new PerformanceObserver((list) => {
+      list.getEntries().forEach((e) => {
+        if (e.entryType === 'largest-contentful-paint') {
+          console.log('LCP:', Math.round(e.startTime));
+        }
+        if (e.entryType === 'layout-shift' && !e.hadRecentInput) {
+          console.log('CLS:', e.value);
+        }
+      });
+    });
+    po.observe({ type: 'largest-contentful-paint', buffered: true });
+    po.observe({ type: 'layout-shift', buffered: true });
+  } catch {}
+})();
