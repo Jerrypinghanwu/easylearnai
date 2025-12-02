@@ -120,7 +120,8 @@ img { max-width: 100%; height: auto; }
 .audience-img { margin-top: 0; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
 .illustration { width: 100%; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
 .route-title { text-align: center; font-size: clamp(19px, 2.2vw, 22px); font-weight: 800; margin: 0 0 12px; }
-.route-img { display: block; margin: 20px auto; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
+.route-img { display: block; margin: 20px auto; width: clamp(320px, 80vw, 860px); max-width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
+#route .container { width: min(960px, 92vw); }
 
 .footer { border-top: 1px solid var(--border); padding: 24px 0; }
 .footer-inner { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 16px; }
