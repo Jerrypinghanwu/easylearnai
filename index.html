@@ -14,9 +14,18 @@
     <header class="nav">
       <div class="container nav-inner">
         <a href="#hero" class="brand">AI 簡單學</a>
+        <button class="menu-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-label="開啟選單">
+          <span></span><span></span><span></span>
+        </button>
         <nav class="links">
+          <a href="#features">核心特色</a>
+          <a href="#course-ai">第一部分</a>
+          <a href="#course-blog">第二部分</a>
           <a href="https://p.ecpay.com.tw/9FB0AB3" target="_blank" rel="noopener noreferrer" class="btn primary large">立刻報名</a>
         </nav>
+      </div>
+      <div id="mobile-menu" class="mobile-menu" hidden>
+        <a href="https://p.ecpay.com.tw/9FB0AB3" target="_blank" rel="noopener noreferrer" class="btn primary large">立刻報名</a>
       </div>
     </header>
 
@@ -27,9 +36,10 @@
             <span class="course-name">《零基礎 3 週 AI 網站創作者》課程 </span>
           </h1>
         </div>
-        <img src="image/unnamed (4).jpg" alt="課程示意" class="hero-img hero-img-large" />
+        <img src="image/unnamed (4).jpg" alt="課程示意" class="hero-img hero-img-large" loading="lazy" decoding="async" />
         <div class="hero-price">4800 元</div>
-        <p class="subtitle">打造個人官網，開始你的創作事業。三週的課程，完整涵蓋 AI 工具與部落格系統。</p>
+        <p class="subtitle">打造個人官網，開始你的創作事業。<br>三週的課程，完整涵蓋 AI 工具與部落格系統。</p>
+        <p class="hero-note">開課時間請於繳款後，<a href="#cta" class="note-link">聯繫客服</a>進行開班，一旦答開班人數，則會有信件通知。<br>舉例（每週三晚上 8～10 點，連續三週），目前全部為線上課程。</p>
         <div class="hero-actions">
           <a href="https://p.ecpay.com.tw/9FB0AB3" target="_blank" rel="noopener noreferrer" class="btn primary large">立刻報名</a>
         </div>
@@ -45,14 +55,22 @@
             <li>想學習會員系統的開發者</li>
             <li>對內容管理有興趣的學員</li>
           </ul>
-          <img src="image/unnamed77.jpg" alt="適合對象示意" class="audience-img" />
+          <img src="image/unnamed77.jpg" alt="適合對象示意" class="audience-img" loading="lazy" decoding="async" />
         </div>
+      </div>
+    </section>
+
+    <section id="route" class="section">
+      <div class="container">
+        <h2 class="route-title">學習路線</h2>
+        <img src="image/mapword.png" alt="學習路線" class="route-img" loading="lazy" decoding="async" />
       </div>
     </section>
 
     <section id="features" class="section">
       <div class="container">
-        <h2 class="section-title">核心特色（三週的時間到底要做什麼）</h2>
+        <h2 class="section-title">核心特色</h2>
+        <p class="features-desc">（三週的時間到底要做什麼）</p>
         <div class="features-grid">
           <div class="card">
             <div class="card-tag">第一部分</div>
@@ -70,12 +88,13 @@
 
     <section id="course-ai" class="section">
       <div class="container">
-        <h2 class="section-title">課程內容｜第一部分（2 小時）：從頭學 AI（使用 Gemini CLI）</h2>
+        <h2 class="section-title small">課程內容｜第一部分（2 小時）：</h2>
+        <p class="section-subtitle">從頭學 AI（使用 Gemini CLI）</p>
         <div class="course-meta">
           <span class="badge">時數：2 小時</span>
         </div>
         <div class="columns">
-          <div class="col">
+          <div class="col col-center">
             <h3 class="col-title">你將學會</h3>
             <ul class="list">
               <li>安裝並使用 Google Gemini CLI</li>
@@ -91,7 +110,7 @@
             </ul>
           </div>
           <div class="col">
-            <img src="image/unnamed (41).jpg" alt="部落格系統示意圖" class="illustration" />
+            <img src="image/unnamed (41).jpg" alt="部落格系統示意圖" class="illustration" loading="lazy" decoding="async" />
             <h3 class="col-title">課程重點</h3>
             <div class="code-block">
               <pre>
@@ -117,13 +136,14 @@
 
     <section id="course-blog" class="section">
       <div class="container">
-        <h2 class="section-title">課程內容｜第二部分（4 小時）：部落格網站（內容編輯器、會員系統）</h2>
+        <h2 class="section-title small">課程內容｜第二部分（4 小時）：</h2>
+        <p class="section-subtitle">部落格網站（內容編輯器、會員系統）</p>
         <div class="course-meta">
           <span class="badge">時數：4 小時</span>
           <span class="badge">使用 SQLite 資料庫</span>
         </div>
         <div class="columns">
-          <div class="col">
+          <div class="col col-center">
             <h3 class="col-title">你將學會</h3>
             <ul class="list">
               <li>完整的部落格管理系統</li>
@@ -175,13 +195,31 @@
       </div>
     </section>
 
+
+    <section id="setup" class="section">
+      <div class="container">
+        <h2 class="section-title">必要工具安裝指南</h2>
+        <div class="code-block">
+          <pre>
+## 必要工具清單
+- Python 3.10+
+- Git 2.40+
+- Node.js 18+（可選）
+- ClaudeCode（VS Code 擴充）
+- Gemini CLI / SDK
+          </pre>
+        </div>
+      </div>
+    </section>
+
     <section id="cta" class="cta">
       <div class="container cta-inner">
         <h2 class="cta-title">LINE 客服</h2>
         <p class="cta-text">掃描 QR code 加好友，諮詢課程與報名支付。</p>
-        <img src="image/AI QR code.png" alt="LINE 客服 QR Code" class="qr" />
+        <img src="image/AI QR code.png" alt="LINE 客服 QR Code" class="qr" loading="lazy" decoding="async" />
       </div>
     </section>
+
 
     <footer class="footer">
       <div class="container footer-inner">
@@ -191,6 +229,7 @@
           <a href="#course-ai">AI 課程</a>
           <a href="#course-blog">部落格課程</a>
           <a href="#cta">報名</a>
+          <a href="mailto:thefunstartup@gmail.com">thefunstartup@gmail.com</a>
         </div>
         <div class="copy">© 2025 AIeasyLearn</div>
       </div>

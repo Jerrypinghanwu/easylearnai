@@ -26,3 +26,32 @@ revealEls.forEach(el => {
   el.style.transition = 'transform .35s ease, opacity .35s ease';
   io.observe(el);
 });
+
+const menuToggle = document.querySelector('.menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+if (menuToggle && mobileMenu) {
+  menuToggle.addEventListener('click', () => {
+    const open = menuToggle.getAttribute('aria-expanded') === 'true';
+    const next = !open;
+    menuToggle.setAttribute('aria-expanded', String(next));
+    if (next) {
+      mobileMenu.hidden = false;
+    } else {
+      mobileMenu.hidden = true;
+    }
+  });
+
+  mobileMenu.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+      mobileMenu.hidden = true;
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+  });
+}
