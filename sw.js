@@ -1,20 +1,18 @@
-const CACHE_NAME = 'ailearn-cache-v1';
+const CACHE_NAME = 'ailearn-cache-v3';
 const CORE_ASSETS = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/image/unnamed%20(4).jpg',
-  '/image/unnamed77.jpg',
-  '/image/unnamed%20(41).jpg',
-  '/image/AI%20QR%20code.png',
-  '/image/mapword.png'
+  'index.html',
+  'styles.css',
+  'script.js',
+  'image/unnamed%20(6).jpg',
+  'image/unnamed77.jpg',
+  'image/unnamed%20(41).jpg',
+  'image/AI%20QR%20code.png',
+  'image/mapword.png'
 ];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS))
-  );
+  self.skipWaiting();
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS)));
 });
 
 self.addEventListener('activate', (event) => {
@@ -23,6 +21,7 @@ self.addEventListener('activate', (event) => {
       keys.map((k) => (k !== CACHE_NAME ? caches.delete(k) : Promise.resolve()))
     ))
   );
+  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
@@ -33,8 +32,7 @@ self.addEventListener('fetch', (event) => {
       const network = fetch(request).then((resp) => {
         const copy = resp.clone();
         caches.open(CACHE_NAME).then((cache) => {
-          // 只緩存成功回應
-          if (resp.ok && (request.url.startsWith(self.location.origin))) {
+          if (resp.ok && request.url.startsWith(self.location.origin)) {
             cache.put(request, copy);
           }
         });
@@ -44,4 +42,3 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
-
