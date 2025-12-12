@@ -32,7 +32,8 @@ body {
   border-bottom: 1px solid var(--border);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
-.brand { font-weight: 800; letter-spacing: 0.5px; text-decoration: none; color: var(--yellow); font-size: clamp(20px, 2.8vw, 28px); }
+.brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; letter-spacing: 0.5px; text-decoration: none; color: var(--yellow); font-size: clamp(20px, 2.8vw, 28px); }
+.brand-icon { width: 20px; height: 20px; object-fit: contain; border-radius: 50%; }
 .links a { color: var(--yellow); text-decoration: none; margin-left: 20px; opacity: 0.9; }
 .links a:hover { opacity: 1; }
 .cta-link { border-bottom: 2px solid var(--yellow); }
@@ -63,10 +64,29 @@ body {
 .btn.small { padding: 8px 12px; font-size: 14px; }
 .btn.large { padding: 18px 28px; font-size: 18px; }
 .btn.primary { background: var(--yellow); color: var(--bg); box-shadow: 0 0 24px rgba(255, 212, 0, 0.2); }
-.btn.primary:hover { transform: translateY(-1px); box-shadow: 0 0 36px rgba(255, 212, 0, 0.32); }
+.btn.primary:hover { box-shadow: 0 0 36px rgba(255, 212, 0, 0.32); }
 .btn.primary.large { animation: float 3s ease-in-out infinite; }
 .btn.ghost { border: 1px solid var(--border); color: var(--yellow); background: transparent; }
 .btn.ghost:hover { border-color: var(--yellow); }
+.btn.icon { display: inline-flex; align-items: center; gap: 8px; }
+.btn.icon svg { width: 18px; height: 18px; }
+.btn.icon img { width: 18px; height: 18px; object-fit: contain; display: block; }
+
+@media (hover: hover) and (pointer: fine) {
+  .btn { transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; transform-origin: center; will-change: transform; }
+  .btn:hover { transform: scale(1.12); }
+  .btn:active { transform: scale(1.08); }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .btn { transition: none; }
+  .btn:hover, .btn:active { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+  .btn:hover, .btn:active { transform: none; }
+}
 
 .glow {
   position: absolute;
@@ -116,7 +136,9 @@ img { max-width: 100%; height: auto; }
 .cta-inner { text-align: center; }
 .cta-title { font-size: 26px; font-weight: 800; margin: 0 0 10px; }
 .cta-text { color: var(--muted); margin: 0 0 18px; }
-.qr { width: 220px; height: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); background: var(--card); padding: 10px; }
+.qr { width: 280px; height: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); background: var(--card); padding: 10px; }
+.cta-actions { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
+.btn.icon.small img, .btn.icon.small svg { width: 16px; height: 16px; }
 .audience-img { margin-top: 0; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
 .illustration { width: 100%; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
 .route-title { text-align: center; font-size: clamp(19px, 2.2vw, 22px); font-weight: 800; margin: 0 0 12px; }
@@ -125,6 +147,12 @@ img { max-width: 100%; height: auto; }
 
 #brand .section-title { font-size: 30px; }
 .brand-img { margin: 0 auto 14px; width: 100%; max-width: 680px; height: auto; }
+
+.newsletter { margin-top: 56px; }
+.newsletter-title { font-size: 22px; font-weight: 800; margin: 0 0 8px; text-align: center; }
+.newsletter-form { max-width: 480px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+.newsletter-form .form-row { grid-column: 1 / -1; }
+.newsletter-feedback { grid-column: 1 / -1; margin-top: 8px; font-size: 14px; font-weight: 700; text-align: center; color: var(--yellow); min-height: 20px; }
 
 .footer { border-top: 1px solid var(--border); padding: 24px 0; }
 .footer-inner { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 16px; }
@@ -169,6 +197,7 @@ img { max-width: 100%; height: auto; }
   .list li { margin: 0.8em 0; }
   .btn { min-height: 48px; }
   .route-img { max-width: 520px; margin: 16px auto; }
+  .newsletter-form { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 414px) {

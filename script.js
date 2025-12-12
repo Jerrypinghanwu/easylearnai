@@ -85,6 +85,48 @@ if ('serviceWorker' in navigator) {
   } catch {}
 })();
 
+const newsletterForm = document.getElementById('newsletter-form');
+if (newsletterForm) {
+  const emailInput = document.getElementById('newsletter-email');
+  const submitBtn = document.getElementById('newsletter-submit');
+  const feedbackEl = document.getElementById('newsletter-feedback');
+  const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  const setLoading = (loading) => {
+    if (!submitBtn) return;
+    submitBtn.disabled = loading;
+    submitBtn.textContent = loading ? '訂閱中…' : '立即訂閱';
+  };
+  const handleSubscribe = async () => {
+    const email = emailInput ? emailInput.value.trim() : '';
+    if (!isValidEmail(email)) {
+      if (feedbackEl) feedbackEl.textContent = '請輸入有效的 Email';
+      return;
+    }
+    setLoading(true);
+    if (feedbackEl) feedbackEl.textContent = '';
+    try {
+      const action = newsletterForm.getAttribute('action') || 'https://app.convertkit.com/forms/8866341/subscriptions';
+      const fd = new FormData(newsletterForm);
+      // Ensure the email field exists even if name changed
+      if (!fd.has('email_address') && email) fd.append('email_address', email);
+      const res = await fetch(action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+      setLoading(false);
+      if (res.ok) {
+        if (feedbackEl) feedbackEl.textContent = '感謝訂閱！';
+        if (emailInput) emailInput.value = '';
+      } else {
+        if (feedbackEl) feedbackEl.textContent = '送出失敗，請稍後再試';
+      }
+    } catch {
+      setLoading(false);
+      if (feedbackEl) feedbackEl.textContent = '送出失敗，請檢查網路連線';
+    }
+  };
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    handleSubscribe();
+  });
+}
  
 
 // Basic performance metrics
