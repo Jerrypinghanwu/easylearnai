@@ -136,7 +136,7 @@ img { max-width: 100%; height: auto; }
 .cta-inner { text-align: center; }
 .cta-title { font-size: 26px; font-weight: 800; margin: 0 0 10px; }
 .cta-text { color: var(--muted); margin: 0 0 18px; }
-.cta-blurb { font-size: clamp(18px, 2vw, 24px); font-weight: 800; margin: 0 0 12px; text-align: center; color: var(--yellow); max-width: 820px; margin-left: auto; margin-right: auto; }
+.cta-blurb { font-size: clamp(22px, 3vw, 32px); font-weight: 800; margin: 0 0 18px; text-align: center; color: var(--yellow); max-width: 960px; margin-left: auto; margin-right: auto; }
 .qr { width: 280px; height: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); background: var(--card); padding: 10px; }
 .cta-actions { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
 .btn.icon.small img, .btn.icon.small svg { width: 16px; height: 16px; }
@@ -149,8 +149,8 @@ img { max-width: 100%; height: auto; }
 #brand .section-title { font-size: 30px; }
 .brand-img { margin: 0 auto 14px; width: 100%; max-width: 680px; height: auto; }
 #brand.section { padding-bottom: 96px; }
-#brand .card-text { font-size: clamp(16px, 2.2vw, 20px); line-height: 1.7; }
-#brand .cta-blurb { margin-bottom: 28px; }
+#brand .card-text { font-size: clamp(16px, 2.2vw, 20px); line-height: 1.7; margin: 0 0 18px; }
+#brand .cta-blurb { margin-bottom: 36px; }
 
 .newsletter { margin-top: 56px; }
 .newsletter-title { font-size: 22px; font-weight: 800; margin: 0 0 8px; text-align: center; }
