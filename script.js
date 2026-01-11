@@ -10,6 +10,7 @@ links.forEach(l => {
   });
 });
 
+// Enhanced scroll reveal for cards and columns
 const revealEls = document.querySelectorAll('.card, .col');
 const io = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -26,6 +27,33 @@ revealEls.forEach(el => {
   el.style.transition = 'transform .35s ease, opacity .35s ease';
   io.observe(el);
 });
+
+// Button ripple effect on click
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(0);
+      animation: ripple 0.6s ease-out;
+      pointer-events: none;
+    `;
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+});
+
+// Add ripple animation keyframes
+const style = document.createElement('style');
+style.textContent = `@keyframes ripple { to { transform: scale(4); opacity: 0; } }`;
+document.head.appendChild(style);
 
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -59,7 +87,7 @@ if (contactForm) {
 // Register service worker for caching
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+    navigator.serviceWorker.register('sw.js').catch(() => { });
   });
 }
 
@@ -80,9 +108,9 @@ if ('serviceWorker' in navigator) {
       try {
         const res = await fetch(webp, { method: 'HEAD' });
         if (res.ok) img.src = webp;
-      } catch {}
+      } catch { }
     });
-  } catch {}
+  } catch { }
 })();
 
 const newsletterForm = document.getElementById('newsletter-form');
@@ -127,7 +155,7 @@ if (newsletterForm) {
     handleSubscribe();
   });
 }
- 
+
 
 // Basic performance metrics
 (function () {
@@ -144,5 +172,5 @@ if (newsletterForm) {
     });
     po.observe({ type: 'largest-contentful-paint', buffered: true });
     po.observe({ type: 'layout-shift', buffered: true });
-  } catch {}
+  } catch { }
 })();
