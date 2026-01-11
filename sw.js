@@ -3,7 +3,6 @@ const CORE_ASSETS = [
   'index.html',
   'styles.css',
   'script.js',
-  'image/unnamed%20(6).jpg',
   'image/unnamed77.jpg',
   'image/unnamed%20(41).jpg',
   'image/AI%20QR%20code.png',

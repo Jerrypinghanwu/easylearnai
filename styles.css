@@ -28,7 +28,7 @@ body {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(10px);
-  background: color-mix(in oklab, var(--bg) 70%, transparent);
+  background: color-mix(in oklab, var(--bg) 95%, transparent);
   border-bottom: 1px solid var(--border);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
@@ -136,14 +136,14 @@ img { max-width: 100%; height: auto; }
 .cta-inner { text-align: center; }
 .cta-title { font-size: 26px; font-weight: 800; margin: 0 0 10px; }
 .cta-text { color: var(--muted); margin: 0 0 18px; }
-.cta-blurb { font-size: clamp(22px, 3vw, 32px); font-weight: 800; margin: 0 0 18px; text-align: center; color: var(--yellow); max-width: 960px; margin-left: auto; margin-right: auto; }
+.cta-blurb { font-size: clamp(18px, 2.2vw, 24px); font-weight: 800; margin: 0 0 18px; text-align: center; color: var(--yellow); max-width: 960px; margin-left: auto; margin-right: auto; }
 .qr { width: 280px; height: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); background: var(--card); padding: 10px; }
 .cta-actions { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
 .btn.icon.small img, .btn.icon.small svg { width: 16px; height: 16px; }
 .audience-img { margin-top: 0; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
 .illustration { width: 100%; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
 .route-title { text-align: center; font-size: clamp(19px, 2.2vw, 22px); font-weight: 800; margin: 0 0 12px; }
-.route-img { display: block; margin: 20px auto; width: 100%; max-width: 600px; height: auto; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); content-visibility: auto; contain-intrinsic-size: 600px 340px; aspect-ratio: 16/9; object-fit: contain; }
+.route-img { display: block; margin: 20px auto; width: 100%; max-width: 800px; height: auto; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,0.35); content-visibility: auto; contain-intrinsic-size: 800px 450px; aspect-ratio: 16/9; object-fit: contain; }
 #route .container { width: min(960px, 92vw); }
 
 #brand .section-title { font-size: 30px; }
