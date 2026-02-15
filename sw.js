@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ailearn-cache-v3';
+const CACHE_NAME = 'ailearn-cache-v4';
 const CORE_ASSETS = [
   'index.html',
   'styles.css',
@@ -6,7 +6,7 @@ const CORE_ASSETS = [
   'image/unnamed77.jpg',
   'image/unnamed%20(41).jpg',
   'image/AI%20QR%20code.png',
-  'image/mapword.png'
+  'image/mapword_light.png'
 ];
 
 self.addEventListener('install', (event) => {
