@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-DNS-Prefetch-Control" content="on" />
   <title>AI簡單學｜台灣AI教學入門與實戰｜AI 簡單學 官方網站</title>
   <meta name="description" content="AI簡單學提供台灣AI教學與AI入門實戰課程。內容涵蓋AI工具操作、台灣AI應用案例、部落格系統開發與SEO。適合台灣使用者快速掌握AI、從零開始打造個人網站。" />
   <meta property="og:type" content="website" />
@@ -13,8 +15,14 @@
   <meta property="og:url" content="https://easylearnai.dpdns.org/" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://easylearnai.dpdns.org/" />
+  <link rel="preload" as="image" href="image/unnamed%20(41).jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="dns-prefetch" href="https://p.ecpay.com.tw" />
+  <link rel="dns-prefetch" href="https://www.accupass.com" />
+  <link rel="dns-prefetch" href="https://app.convertkit.com" />
+  <link rel="dns-prefetch" href="https://f.convertkit.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;600;800&display=swap"
     rel="stylesheet" media="print" onload="this.media='all'" />
@@ -23,16 +31,29 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;600;800&display=swap"
       rel="stylesheet" />
   </noscript>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.min.css" />
   <link rel="icon" type="image/png" href="icon/nature.png" />
   <link rel="shortcut icon" type="image/png" href="icon/nature.png" />
   <link rel="apple-touch-icon" href="icon/nature.png" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4E6WCVX3NQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-4E6WCVX3NQ');
+    (function loadGtag() {
+      var fn = function () {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-4E6WCVX3NQ';
+        s.async = true;
+        s.crossOrigin = 'anonymous';
+        document.head.appendChild(s);
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(fn, { timeout: 3000 });
+      } else {
+        setTimeout(fn, 2000);
+      }
+    })();
   </script>
   <script type="application/ld+json">
     {
@@ -343,7 +364,7 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script src="script.min.js" defer></script>
 </body>
 
 </html>

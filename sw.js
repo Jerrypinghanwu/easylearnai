@@ -1,8 +1,8 @@
-const CACHE_NAME = 'ailearn-cache-v4';
+const CACHE_NAME = 'ailearn-cache-v5';
 const CORE_ASSETS = [
   'index.html',
-  'styles.css',
-  'script.js',
+  'styles.min.css',
+  'script.min.js',
   'image/unnamed77.jpg',
   'image/unnamed%20(41).jpg',
   'image/AI%20QR%20code.png',

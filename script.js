@@ -84,36 +84,49 @@ if (newsletterForm) {
   const emailInput = document.getElementById('newsletter-email');
   const submitBtn = document.getElementById('newsletter-submit');
   const feedbackEl = document.getElementById('newsletter-feedback');
+  let isSubmitting = false;
+  const sanitize = (str) => str.replace(/<[^>]*>/g, '').trim();
   const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  const showFeedback = (msg) => {
+    if (feedbackEl) {
+      feedbackEl.textContent = msg;
+      if (msg) setTimeout(() => { feedbackEl.textContent = ''; }, 5000);
+    }
+  };
   const setLoading = (loading) => {
+    isSubmitting = loading;
     if (!submitBtn) return;
     submitBtn.disabled = loading;
     submitBtn.textContent = loading ? '訂閱中…' : '立即訂閱';
   };
   const handleSubscribe = async () => {
-    const email = emailInput ? emailInput.value.trim() : '';
+    if (isSubmitting) return;
+    const email = emailInput ? sanitize(emailInput.value) : '';
+    if (!email || email.length > 254) {
+      showFeedback('請輸入有效的 Email');
+      return;
+    }
     if (!isValidEmail(email)) {
-      if (feedbackEl) feedbackEl.textContent = '請輸入有效的 Email';
+      showFeedback('請輸入有效的 Email');
       return;
     }
     setLoading(true);
-    if (feedbackEl) feedbackEl.textContent = '';
+    showFeedback('');
     try {
       const action = newsletterForm.getAttribute('action') || 'https://app.convertkit.com/forms/8866341/subscriptions';
       const fd = new FormData(newsletterForm);
-      // Ensure the email field exists even if name changed
       if (!fd.has('email_address') && email) fd.append('email_address', email);
       const res = await fetch(action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
       setLoading(false);
       if (res.ok) {
-        if (feedbackEl) feedbackEl.textContent = '感謝訂閱！';
+        showFeedback('感謝訂閱！');
         if (emailInput) emailInput.value = '';
       } else {
-        if (feedbackEl) feedbackEl.textContent = '送出失敗，請稍後再試';
+        showFeedback('送出失敗，請稍後再試');
       }
     } catch {
       setLoading(false);
-      if (feedbackEl) feedbackEl.textContent = '送出失敗，請檢查網路連線';
+      showFeedback('送出失敗，請檢查網路連線');
     }
   };
   newsletterForm.addEventListener('submit', (e) => {
